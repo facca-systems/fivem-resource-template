@@ -1,5 +1,6 @@
-import { animated, SpringValue } from '@react-spring/web';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import './styles/animation.css';
 
 export type ToastifyProps = {
   id: string;
@@ -18,55 +19,68 @@ const IconVariants = {
   error: <ErrorSvg />,
 };
 
+const animationMillisecondsDuration = 500;
+
 export function Toastify({
   id,
   text,
   time,
   type,
   onRemoveNotify,
-  style,
 }: ToastifyProps & {
-  style: { transform: SpringValue<string>; opacity: SpringValue<number> };
   onRemoveNotify: (notifyId: string) => void;
 }) {
+  const [isRendered, setIsRendered] = useState(false);
+
   useEffect(() => {
+    setIsRendered(true);
+
+    const removeToastifyId = setTimeout(
+      () => {
+        setIsRendered(false);
+      },
+      (time ?? 5000) - animationMillisecondsDuration,
+    );
+
     const intervalId = setTimeout(() => {
       onRemoveNotify(id);
     }, time ?? 5000);
 
-    return () => clearTimeout(intervalId);
+    return () => {
+      clearTimeout(intervalId);
+      clearTimeout(removeToastifyId);
+    };
   }, [time, id, onRemoveNotify]);
 
   return (
-    <animated.div
-      style={style}
+    <div
+      style={{
+        animation: `${isRendered ? 'enter' : 'leave'} ${animationMillisecondsDuration}ms ease`,
+      }}
       className="w-[17.5625rem] min-h-[2.9375rem] h-fit px-[.9375rem] pt-[.625rem] flex flex-col items-center relative bg-white/90 rounded-[.125rem] border border-white border-solid"
     >
-      <animated.div
-        style={style}
-        className="flex items-center gap-[.375rem] w-full mb-[.8125rem]"
-      >
+      <div className="flex items-center gap-[.375rem] w-full mb-[.8125rem]">
         {IconVariants[type] ?? <SuccessSvg />}
 
-        <animated.span
+        <span
           className="text-sm"
-          style={{ ...style, color: TypeVariants[type] ?? 'rgb(2, 141, 7)' }}
+          style={{ color: TypeVariants[type] ?? 'rgb(2, 141, 7)' }}
         >
           {text}aaaaaaaaa
-        </animated.span>
-      </animated.div>
+        </span>
+      </div>
 
-      <animated.div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[15.6875rem] h-[.1875rem] bg-black/10 rounded-[.125rem]">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[15.6875rem] h-[.1875rem] bg-black/10 rounded-[.125rem]">
         <div
           className="h-full"
           style={{
             width: '0%',
             background: TypeVariants[type] ?? 'rgb(2, 141, 7)',
-            animation: `progress ${time ?? 5000}ms linear`,
+            animation: `progress ${(time ?? 5000) - animationMillisecondsDuration}ms linear`,
           }}
         />
-      </animated.div>
-    </animated.div>
+      </div>
+    </div>
   );
 }
 
