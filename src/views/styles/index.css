@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Outfit', serif;
+}
+
+body {
+  @apply text-white overflow-hidden select-none;
+}
+
+.stopColorPrimaryColor {
+  stop-color: rgb(var(--primaryColor));
+}
+.stopColorSecondaryColor {
+  stop-color: rgb(var(--secondaryColor));
+}
+
+.fillPrimaryColor {
+  fill: rgb(var(--primaryColor));
+}
+
+.fillThirdyColor {
+  fill: rgb(var(--thirdyColor));
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.customScrollbar::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--primaryColor));
+  border-radius: 0.125rem;
+}

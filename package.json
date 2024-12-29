@@ -1,0 +1,52 @@
+{
+  "name": "miguel-facca-nxgroup-boilerplate",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@react-spring/web": "^9.7.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
+    "sharp": "^0.33.5",
+    "tailwind-merge": "^2.3.0",
+    "use-sound": "^4.0.3",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "globals": "^15.8.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.39",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}
