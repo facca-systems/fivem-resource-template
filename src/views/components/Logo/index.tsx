@@ -1,12 +1,10 @@
-import LogoImage from '@views/assets/images/logos/faccasystems.png?optimized';
-
-import { Img } from '../Img';
+import LogoImage from '@views/assets/svgs/facca-systems-icon.svg';
 
 export function Logo() {
   return (
-    <Img
+    <img
       src={LogoImage}
-      className="size-[15.625rem] object-contain"
+      className="size-[5rem] mt-6 object-contain"
       alt="facca-systems"
     />
   );
