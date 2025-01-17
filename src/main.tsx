@@ -11,7 +11,7 @@ if (isEnvBrowser()) {
   const body = document.getElementById("root");
 
   body!.style.backgroundImage = "url('https://files.catbox.moe/4lban5.png')";
-  body!.style.backgroundSize = "100%";
+  body!.style.backgroundSize = "cover";
   body!.style.backgroundRepeat = "no-repeat";
   body!.style.backgroundPosition = "center";
   body!.style.height = "100vh";
