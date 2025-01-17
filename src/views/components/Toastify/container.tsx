@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useNuiMessage } from '@app/hooks/useNuiMessage';
-import { debugData } from '@app/utils/debugData';
 
 import { Toastify, ToastifyProps } from '.';
 
@@ -14,25 +13,6 @@ export function ToastifyContainer() {
 
     setToastifys((prevState) => prevState.concat({ ...data, id }));
   });
-
-  useEffect(() => {
-    debugData([
-      {
-        action: 'addToastify',
-        payload: {
-          text: 'Toastify added successfully!',
-          type: 'success',
-        },
-      },
-      {
-        action: 'addToastify',
-        payload: {
-          text: 'Toastify added successfully!',
-          type: 'error',
-        },
-      },
-    ]);
-  }, []);
 
   return createPortal(
     <div className="top-[15.625rem] right-[3.125rem] absolute flex flex-col gap-[.3125rem] z-[999]">

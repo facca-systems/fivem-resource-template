@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-MediumItalic.eot');
+    src: local('Purista Medium Italic'), local('Purista-MediumItalic'),
+        url('Purista-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Purista-MediumItalic.woff2') format('woff2'),
+        url('Purista-MediumItalic.woff') format('woff'),
+        url('Purista-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-Medium.eot');
+    src: local('Purista Medium'), local('Purista-Medium'),
+        url('Purista-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Purista-Medium.woff2') format('woff2'),
+        url('Purista-Medium.woff') format('woff'),
+        url('Purista-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-SemiBoldItalic.eot');
+    src: local('Purista SemiBold Italic'), local('Purista-SemiBoldItalic'),
+        url('Purista-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Purista-SemiBoldItalic.woff2') format('woff2'),
+        url('Purista-SemiBoldItalic.woff') format('woff'),
+        url('Purista-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-LightItalic.eot');
+    src: local('Purista Light Italic'), local('Purista-LightItalic'),
+        url('Purista-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Purista-LightItalic.woff2') format('woff2'),
+        url('Purista-LightItalic.woff') format('woff'),
+        url('Purista-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-Light.eot');
+    src: local('Purista Light'), local('Purista-Light'),
+        url('Purista-Light.eot?#iefix') format('embedded-opentype'),
+        url('Purista-Light.woff2') format('woff2'),
+        url('Purista-Light.woff') format('woff'),
+        url('Purista-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-ThinItalic.eot');
+    src: local('Purista Thin Italic'), local('Purista-ThinItalic'),
+        url('Purista-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('Purista-ThinItalic.woff2') format('woff2'),
+        url('Purista-ThinItalic.woff') format('woff'),
+        url('Purista-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-Bold.eot');
+    src: local('Purista Bold'), local('Purista-Bold'),
+        url('Purista-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Purista-Bold.woff2') format('woff2'),
+        url('Purista-Bold.woff') format('woff'),
+        url('Purista-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-SemiBold.eot');
+    src: local('Purista SemiBold'), local('Purista-SemiBold'),
+        url('Purista-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Purista-SemiBold.woff2') format('woff2'),
+        url('Purista-SemiBold.woff') format('woff'),
+        url('Purista-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-BoldItalic.eot');
+    src: local('Purista Bold Italic'), local('Purista-BoldItalic'),
+        url('Purista-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Purista-BoldItalic.woff2') format('woff2'),
+        url('Purista-BoldItalic.woff') format('woff'),
+        url('Purista-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Purista';
+    src: url('Purista-Thin.eot');
+    src: local('Purista Thin'), local('Purista-Thin'),
+        url('Purista-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Purista-Thin.woff2') format('woff2'),
+        url('Purista-Thin.woff') format('woff'),
+        url('Purista-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+

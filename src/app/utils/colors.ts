@@ -7,9 +7,9 @@ export const ColorVariants = {
   magenta: '#ff90ed',
   gray: '#c5c5c5',
   FACCA: {
-    primaryColor: '',
-    secondaryColor: '',
-    thirdyColor: ''
+    primaryColor: '188, 132, 237',
+    secondaryColor: '61, 5, 110',
+    thirdyColor: '143, 75, 201',
   },
 };
 

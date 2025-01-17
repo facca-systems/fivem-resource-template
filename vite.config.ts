@@ -3,12 +3,23 @@ import path from 'node:path';
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator';
 
 import { imageOptimizerPlugin } from './plugins/ImageOptmizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), imageOptimizerPlugin()],
+  plugins: [
+    react(),
+    imageOptimizerPlugin(),
+    obfuscatorPlugin({
+      options: {
+        // your javascript-obfuscator options
+        debugProtection: true,
+        // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
+      },
+    }),
+  ],
   base: './',
   server: {
     open: true,

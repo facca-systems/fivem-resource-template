@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import '@views/styles/index.css';
-
 import { VisibilityProvider } from '@app/contexts/VisibilityContext';
 import { Router } from '@app/router/router';
 import { isEnvBrowser } from '@app/utils/misc';
 import { ToastifyContainer } from '@views/components/Toastify/container';
+
+import '@views/styles/fonts/stylesheet.css';
+import '@views/styles/index.css';
 
 if (isEnvBrowser()) {
   const body = document.getElementById('root');
