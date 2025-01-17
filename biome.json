@@ -36,6 +36,9 @@
           }
         }
       },
+      "complexity": {
+        "useOptionalChain": "off"
+      },
       "style": {
         "noNonNullAssertion": "off"
       }
