@@ -36,11 +36,15 @@
           }
         }
       },
+      "correctness": {
+        "noUnusedImports": "error"
+      },
       "complexity": {
         "useOptionalChain": "off"
       },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "useImportType": "error"
       }
     }
   },
