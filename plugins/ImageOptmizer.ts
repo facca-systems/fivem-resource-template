@@ -1,7 +1,6 @@
 import path, { basename, extname } from 'node:path';
 
 import sharp from 'sharp';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Plugin } from 'vite';
 
 const pattern = '?optimized';
@@ -29,7 +28,6 @@ export const imageOptimizerPlugin = (): Plugin[] => [
     async resolveId(id, importer) {
       if (!isIdForSharp(id)) return;
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return resolveId(id, importer!);
     },
     async load(id) {
@@ -71,7 +69,6 @@ export const imageOptimizerPlugin = (): Plugin[] => [
     async resolveId(id, importer) {
       if (!isIdForOptimization(id)) return;
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return resolveId(id, importer!);
     },
     async load(id) {

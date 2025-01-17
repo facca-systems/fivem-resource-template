@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import { isEnvBrowser } from './misc';
 
 interface DebugEvent<T = unknown> {
