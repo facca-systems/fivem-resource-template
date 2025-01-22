@@ -12,7 +12,7 @@ export async function fetchNui<CallbackResultType>({
 	mockData,
 }: {
 	path: string;
-	payload?: number;
+	payload?: any;
 	delay?: number;
 	mockData?: CallbackResultType;
 }) {
