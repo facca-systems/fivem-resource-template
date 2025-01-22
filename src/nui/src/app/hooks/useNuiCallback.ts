@@ -14,7 +14,7 @@ export function useNuiCallback<CallbackResultType>({
 }) {
 	const [data, setData] = useState<CallbackResultType | null>(null);
 	const [error, setError] = useState<false | Error>(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchData = useCallback(async () => {
 		setIsLoading(true);
