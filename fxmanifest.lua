@@ -2,7 +2,7 @@ fx_version "cerulean"
 game "gta5"
 lua54 "yes"
 
-author "HeyyCzer"
+author "HeyyCzer & Miguel Facca (HeyyShop & Facca Systems) // discord: heyyczer | faccamiguel"
 version "1.0.0"
 description "Basic boilerplate"
 
