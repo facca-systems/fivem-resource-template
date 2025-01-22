@@ -1,39 +1,38 @@
-import { isEnvBrowser, sleep } from '@app/utils/misc';
+import { fetchNui } from "@app/utils/fetchNui";
+import { useCallback, useEffect, useState } from "react";
 
-const resourceName = (window as any).GetParentResourceName
-  ? (window as any).GetParentResourceName()
-  : 'zs-boilerplate';
+export function useNuiCallback<CallbackResultType>({
+	path,
+	payload,
+	delay,
+	mockData,
+}: {
+	path: string;
+	payload?: any;
+	mockData?: CallbackResultType;
+	delay?: number;
+}) {
+	const [data, setData] = useState<CallbackResultType | null>(null);
+	const [error, setError] = useState<false | Error>(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-export async function useNuiCallback<CallbackResultType>(
-  path: string,
-  data?: any,
-  mockData?: CallbackResultType,
-  delay?: number,
-): Promise<CallbackResultType> {
-  if (isEnvBrowser() && mockData) {
-    if (delay) {
-      await sleep(delay);
+	const fetchData = useCallback(async () => {
+		setIsLoading(true);
 
-      return mockData;
-    }
+		try {
+			const response = await fetchNui({ path, payload, mockData, delay });
 
-    return mockData;
-  }
+			setData(response);
+		} catch (error: any) {
+			setError(error);
+		} finally {
+			setIsLoading(false);
+		}
+	}, [path, delay, mockData, payload]);
 
-  try {
-    const options = {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: JSON.stringify(data),
-    };
+	useEffect(() => {
+		fetchData();
+	}, [fetchData]);
 
-    const resp = await fetch(`https://${resourceName}/${path}`, options);
-    const respFormatted = await resp.json();
-
-    return respFormatted;
-  } catch (error: any) {
-    throw new Error(error);
-  }
+	return { data, error, isLoading, setData, refetch: fetchData };
 }

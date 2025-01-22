@@ -1,21 +1,23 @@
 import { useVisibilityStore } from "@app/stores/Visibility";
 import { type ColorVariants, attributeColorsToHTML } from "@app/utils/colors";
+import { fetchNui } from "@app/utils/fetchNui";
 import { useEffect } from "react";
-import { useNuiCallback } from "./useNuiCallback";
 
 export const useServerColors = () => {
-	const visible = useVisibilityStore(state => state.visible)
+	const visible = useVisibilityStore((state) => state.visible);
 
 	useEffect(() => {
 		if (!visible) return;
 
 		(async () => {
-			const resp = await useNuiCallback<
+			const data = await fetchNui<
 				| { primaryColor: string; secondaryColor: string; thirdyColor: string }
 				| keyof typeof ColorVariants
-			>("getColors", {}, "FACCA");
+			>({ path: "getColors", mockData: "FACCA" });
 
-			attributeColorsToHTML(resp);
+			if (!data) return;
+
+			attributeColorsToHTML(data);
 		})();
 	}, [visible]);
 };
