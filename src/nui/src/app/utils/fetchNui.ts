@@ -1,6 +1,9 @@
-import { RESOURCE_NAME } from "@app/consts/resource";
 import { useCallback, useState } from "react";
 import { isEnvBrowser, sleep } from "./misc";
+
+const resourceName = (window as any).GetParentResourceName
+	? (window as any).GetParentResourceName()
+	: "zs-boilerplate";
 
 export async function fetchNui<CallbackResultType>({
 	path,
@@ -22,7 +25,7 @@ export async function fetchNui<CallbackResultType>({
 			return setData(mockData);
 		}
 
-		const resp = await fetch(`https://${RESOURCE_NAME}/${path}`, {
+		const resp = await fetch(`https://${resourceName}/${path}`, {
 			method: "post",
 			headers: {
 				"Content-Type": "application/json; charset=UTF-8",
