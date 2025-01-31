@@ -1,43 +1,39 @@
-import { useCallback, useState } from "react";
 import { isEnvBrowser, sleep } from "./misc";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const resourceName = (window as any).GetParentResourceName
-	? (window as any).GetParentResourceName()
-	: "zs-boilerplate";
+    ? // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        (window as any).GetParentResourceName()
+    : "zs-boilerplate";
 
 export async function fetchNui<CallbackResultType>({
-	path,
-	payload,
-	delay,
-	mockData,
+    path,
+    payload,
+    delay,
+    mockData,
 }: {
-	path: string;
-	payload?: any;
-	delay?: number;
-	mockData?: CallbackResultType;
+    path: string;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    payload?: any;
+    delay?: number;
+    mockData?: CallbackResultType;
 }) {
-	const [data, setData] = useState<CallbackResultType | null>(null);
+    const isBrowser = isEnvBrowser();
 
-	const fetchData = useCallback(async () => {
-		if (isEnvBrowser() && mockData) {
-			delay && (await sleep(delay));
+    isBrowser && console.debug(`[DEBUG] Fetching ${path} with payload:`, payload, mockData);
 
-			return setData(mockData);
-		}
+    if (isBrowser && mockData) {
+        delay && (await sleep(delay));
+        return mockData;
+    }
 
-		const resp = await fetch(`https://${resourceName}/${path}`, {
-			method: "post",
-			headers: {
-				"Content-Type": "application/json; charset=UTF-8",
-			},
-			body: JSON.stringify(payload),
-		});
-		const respFormatted = await resp.json();
-
-		return setData(respFormatted);
-	}, [delay, mockData, payload, path]);
-
-	fetchData();
-
-	return data;
+    const resp = await fetch(`https://${resourceName}/${path}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(payload),
+    });
+    const respFormatted = await resp.json();
+    return respFormatted;
 }
