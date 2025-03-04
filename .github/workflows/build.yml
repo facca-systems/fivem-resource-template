@@ -28,13 +28,15 @@ jobs:
         working-directory: ./src/nui
         run: |
           bun run build
-
       - name: Commitar dist/
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "79928127+miguel-facca@users.noreply.github.com"
           git config --global user.name "miguel-facca"
           git add -A
-          git commit -m "Build✅"
-          git push
+          git commit -m "Build✅" || echo "Nada para commit"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/facca-systems/fivem-resource-template.git HEAD:master
+
         continue-on-error: true
  
