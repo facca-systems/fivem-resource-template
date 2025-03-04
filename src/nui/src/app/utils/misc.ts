@@ -15,5 +15,3 @@ export function isImgValid(url: string): Promise<boolean> {
     img.onload = () => resolve(true);
   });
 }
-
-export { div as AnimatedDiv } from 'motion/react-m';
