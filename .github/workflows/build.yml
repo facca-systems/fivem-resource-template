@@ -20,13 +20,13 @@ jobs:
           bun-version: latest
 
       - name: Instalar dependências
+        working-directory: ./src/nui
         run: |
-          cd src/nui
           bun install
 
       - name: Rodar build
+        working-directory: ./src/nui
         run: |
-          cd src/nui
           bun run build
 
       - name: Commitar dist/
