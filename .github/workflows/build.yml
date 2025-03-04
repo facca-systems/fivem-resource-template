@@ -31,8 +31,8 @@ jobs:
 
       - name: Commitar dist/
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "79928127+miguel-facca@users.noreply.github.com"
+          git config --local user.name "Miguel Facca"
           git add -A
           git commit -m "Build✅"
           git push
