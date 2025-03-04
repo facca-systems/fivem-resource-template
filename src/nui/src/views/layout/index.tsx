@@ -4,11 +4,15 @@ import { cn } from "@app/utils";
 import { Button } from "@views/components/Button";
 import { Logo } from "@views/components/Logo";
 import { Outlet } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 
 export function Layout() {
-  useServerColors();
+  const { visible, setVisible } = useVisibilityStore(useShallow(state => ({
+    visible: state.visible,
+    setVisible: state.setVisible
+  })))
 
-  const visible = useVisibilityStore(state => state.visible)
+  useServerColors();
 
   return (
     <div className={cn("-translate-y-1/2 -translate-x-1/2 absolute top-1/2 left-1/2 z-[2] flex h-[43.75rem] w-[75rem] rounded-[.75rem] bg-[#0f0f0f] p-[.875rem] transition-all duration-500", visible ? "opacity-100" : "opacity-0")}>
