@@ -1,42 +1,25 @@
-name: Build e Commit Dist
+name: Build UI
+on: [push, workflow_dispatch]
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
+permissions:
+  contents: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
+   steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
 
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+      - run: bun install
+        working-directory: src/nui
+      - run: bun run build
+        working-directory: src/nui
 
-      - name: Instalar o Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Instalar dependências
-        working-directory: ./src/nui
+      - name: Commit changes
         run: |
-          bun install
-
-      - name: Rodar build
-        working-directory: ./src/nui
-        run: |
-          bun run build
-      - name: Commitar dist/
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.email "79928127+miguel-facca@users.noreply.github.com"
-          git config --global user.name "miguel-facca"
+          git config --global user.name "HeyyCzer"
+          git config --global user.email "rafa.pereira.carmo@gmail.com"
           git add -A
-          git commit -m "Build✅" || echo "Nada para commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/facca-systems/fivem-resource-template.git HEAD:master
-
-        continue-on-error: true
- 
+          git commit -m "📦 build ui" || true
+          git push
