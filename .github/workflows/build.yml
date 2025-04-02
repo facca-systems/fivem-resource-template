@@ -1,39 +1,25 @@
-name: Build e Commit Dist
+name: Build UI
+on: [push, workflow_dispatch]
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+permissions:
+  contents: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
+   steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
 
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+      - run: bun install
+        working-directory: src/nui
+      - run: bun run build
+        working-directory: src/nui
 
-      - name: Instalar o Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Instalar dependências
+      - name: Commit changes
         run: |
-          cd src/nui
-          bun install
-
-      - name: Rodar build
-        run: |
-          cd src/nui
-          bun run build
-
-      - name: Commitar dist/
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/nui/dist
-          git commit -m "Build✅"
+          git config --global user.name "Miguel Facca"
+          git config --global user.email "miguelfacca@outlook.com"
+          git add -A
+          git commit -m "📦 build ui" || true
           git push
-        continue-on-error: true
