@@ -1,0 +1,1 @@
+import{j as e}from"./index-tI3R4i5r.js";function o(){return e.jsx("div",{className:"flex h-full w-full items-center justify-center rounded-sm border border-white/5 border-solid bg-white/[.02]",children:"home page"})}export{o as Home};
