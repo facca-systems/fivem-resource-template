@@ -11,6 +11,16 @@
 		font-family: "Poppins", serif;
 	}
 
+	html {
+		font-size: .75vw;
+	}
+
+	@media screen and (min-width: 2540px) {
+		html {
+			font-size: .625vw;
+		}
+	}
+
 	body {
 		@apply text-white overflow-hidden select-none;
 	}
