@@ -1,27 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer base {
-	* {
-		margin: 0;
-		padding: 0;
-		outline: 0;
-		box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
 
-		font-family: "Poppins", serif;
-	}
+	font-family: "Poppins", serif;
+}
 
+html {
+	font-size: .75vw;
+}
+
+@media screen and (min-width: 2540px) {
 	html {
-		font-size: .75vw;
+		font-size: .625vw;
 	}
+}
 
-	@media screen and (min-width: 2540px) {
-		html {
-			font-size: .625vw;
-		}
-	}
-
-	body {
-		@apply text-white overflow-hidden select-none;
-	}
+body {
+	@apply text-white overflow-hidden select-none;
 }

@@ -1,37 +1,37 @@
-import { type MutableRefObject, useEffect, useRef } from 'react';
+import { type MutableRefObject, useEffect, useRef } from "react";
 
 interface NuiMessageData<T = unknown> {
-  action: string;
-  payload: T;
+	action: string;
+	payload: T;
 }
 
 type NuiHandlerSignature<T> = (data: T) => void;
 
 export const useNuiMessage = <T = never>(
-  action: string,
-  handler: (payload: T) => void,
+	action: string,
+	handler: (payload: T) => void,
 ) => {
-  const savedHandler: MutableRefObject<NuiHandlerSignature<T>> = useRef(
-    () => {},
-  );
+	const savedHandler: MutableRefObject<NuiHandlerSignature<T>> = useRef(
+		() => {},
+	);
 
-  useEffect(() => {
-    savedHandler.current = handler;
-  }, [handler]);
+	useEffect(() => {
+		savedHandler.current = handler;
+	}, [handler]);
 
-  useEffect(() => {
-    const eventListener = (event: MessageEvent<NuiMessageData<T>>) => {
-      const { action: eventAction, payload } = event.data;
+	useEffect(() => {
+		const eventListener = (event: MessageEvent<NuiMessageData<T>>) => {
+			const { action: eventAction, payload } = event.data;
 
-      if (savedHandler.current) {
-        if (eventAction === action) {
-          savedHandler.current(payload);
-        }
-      }
-    };
+			if (savedHandler.current) {
+				if (eventAction === action) {
+					savedHandler.current(payload);
+				}
+			}
+		};
 
-    window.addEventListener('message', eventListener);
+		window.addEventListener("message", eventListener);
 
-    return () => window.removeEventListener('message', eventListener);
-  }, [action]);
+		return () => window.removeEventListener("message", eventListener);
+	}, [action]);
 };
