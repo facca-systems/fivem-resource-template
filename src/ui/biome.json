@@ -1,59 +1,56 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "ignore": []
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "tab"
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "nursery": {
-        "useSortedClasses": {
-          "fix": "safe",
-          "level": "error",
-          "options": {
-            "attributes": [
-              "className"
-            ],
-            "functions": [
-              "clsx",
-              "cn",
-              "twmerge"
-            ]
-          }
-        }
-      },
-      "correctness": {
-        "noUnusedImports": "error"
-      },
-      "complexity": {
-        "useOptionalChain": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off",
-        "useImportType": "error"
-      },
-      "suspicious": {
-        "noExplicitAny": "off"
-      }
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
-    }
-  }
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"ignore": []
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"nursery": {
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "error",
+					"options": {
+						"attributes": ["className"],
+						"functions": ["clsx", "cn", "twmerge"]
+					}
+				}
+			},
+			"correctness": {
+				"noUnusedImports": "error"
+			},
+			"complexity": {
+				"useOptionalChain": "off"
+			},
+			"style": {
+				"noNonNullAssertion": "off",
+				"useImportType": "error"
+			},
+			"suspicious": {
+				"noExplicitAny": "off"
+			},
+			"a11y": {
+				"noSvgWithoutTitle": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	}
 }
