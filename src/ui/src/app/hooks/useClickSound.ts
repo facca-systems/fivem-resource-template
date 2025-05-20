@@ -9,13 +9,16 @@ export const useClickSound = () => {
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		if (!visible) return;
-
 		const listener = (event: MouseEvent) => {
-			//@ts-expect-error
-			if (event.target.nodeName !== "BUTTON") return;
-			console.log({ event });
-			play();
+			let element = event.target as HTMLElement;
+			while (element) {
+				if (element.nodeName === "BUTTON") {
+					console.log({ event });
+					play();
+					return;
+				}
+				element = element.parentElement as HTMLElement;
+			}
 		};
 
 		window.addEventListener("mousedown", listener);
@@ -23,5 +26,5 @@ export const useClickSound = () => {
 		return () => {
 			window.removeEventListener("mousedown", listener);
 		};
-	}, [visible]);
+	}, []);
 };
