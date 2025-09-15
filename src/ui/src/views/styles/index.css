@@ -13,12 +13,12 @@
 }
 
 html {
-	font-size: .75vw;
+	font-size: 0.833vw;
 }
 
 @media screen and (min-width: 2540px) {
 	html {
-		font-size: .625vw;
+		font-size: 0.62475vw;
 	}
 }
 
