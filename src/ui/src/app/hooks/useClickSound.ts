@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSound } from "./useSound";
 
 export const useClickSound = () => {
-	const { play } = useSound(ClickSound, { volume: 0.05 });
+	const { play } = useSound(ClickSound, { volume: 0.075 });
 	const visible = useVisibilityStore();
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -12,9 +12,14 @@ export const useClickSound = () => {
 		if (!visible) return;
 
 		const listener = (event: MouseEvent) => {
-			//@ts-expect-error
-			if (event.target.nodeName !== "BUTTON") return;
 			console.log({ event });
+			if (
+				//@ts-expect-error
+				event.target.nodeName !== "BUTTON" ||
+				//@ts-expect-error
+				event.target.classList.contains("cursor-not-allowed")
+			)
+				return;
 			play();
 		};
 
