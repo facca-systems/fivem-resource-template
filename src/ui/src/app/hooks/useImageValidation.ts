@@ -10,7 +10,7 @@ function isImgValid(url: string): Promise<boolean> {
 }
 
 export const useImageValidation = (imageUrl: string) => {
-	const [isImageValid, setIsImageValid] = useState(false);
+	const [isImageValid, setIsImageValid] = useState(true);
 
 	useEffect(() => {
 		const validateImage = async () => {
