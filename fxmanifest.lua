@@ -7,16 +7,23 @@ version "1.0.0"
 description "Basic boilerplate"
 
 shared_script {
-	"@ox_lib/init.lua",
-	"@vrp/lib/Utils.lua",
-	"config/*",
-	"src/shared/**",
+    "@ox_lib/init.lua",
+    "@vrp/lib/Utils.lua",
+    "config/*",
+    "src/shared/**",
 }
 
 client_scripts {
-	"src/client/**",
+    "src/client/**",
 }
 
 server_scripts {
-	"src/server/**",
+    "src/server/**",
 }
+
+files {
+    'ui/dist/**',
+    'ui/dist/**/*'
+}
+
+ui_page 'ui/dist/index.html'
