@@ -14,7 +14,7 @@ export async function fetchNui<CallbackResultType>({
 	payload?: any;
 	delay?: number;
 	mockData?: CallbackResultType;
-}) {
+}): Promise<CallbackResultType> {
 	const isBrowser = isEnvBrowser();
 
 	isBrowser &&
@@ -25,13 +25,21 @@ export async function fetchNui<CallbackResultType>({
 		return mockData;
 	}
 
-	const resp = await fetch(`https://${resourceName}/${path}`, {
-		method: "post",
-		headers: {
-			"Content-Type": "application/json; charset=UTF-8",
-		},
-		body: JSON.stringify(payload),
-	});
-	const respFormatted = await resp.json();
-	return respFormatted;
+	try {
+		const resp = await fetch(`https://${resourceName}/${path}`, {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json; charset=UTF-8",
+			},
+			body: JSON.stringify(payload),
+		});
+		const respFormatted = await resp.json();
+		return respFormatted;
+	} catch (error) {
+		console.error(
+			`[ ERROR ] On Nui Callback ${path} -> `,
+			JSON.stringify(error),
+		);
+		return null as CallbackResultType;
+	}
 }
