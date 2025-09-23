@@ -2,6 +2,7 @@ import { useClickSound } from "@app/hooks/useClickSound";
 import { useLayout } from "@app/hooks/useLayout";
 import { useVisibilityStore } from "@app/stores/Visibility";
 import { cn } from "@app/utils";
+import { ErrorBoundary } from "@views/components/ErrorBoundary";
 import { Outlet } from "react-router-dom";
 
 export function Layout() {
@@ -26,7 +27,9 @@ export function Layout() {
 				</button>
 			</header>
 			<main className="h-[calc(100%-5.625rem)] w-full px-4 pb-4">
-				<Outlet />
+				<ErrorBoundary>
+					<Outlet />
+				</ErrorBoundary>
 			</main>
 		</div>
 	);

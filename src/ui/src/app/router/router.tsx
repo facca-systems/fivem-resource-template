@@ -2,6 +2,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { useVisibilityStore } from "@app/stores/Visibility";
 import { lazyLoad } from "@app/utils/lazyLoad";
+import { isEnvBrowser } from "@app/utils/misc";
+import { NotFound } from "@views/components/NotFound";
 import { SpinLoader } from "@views/components/SpinLoader";
 import { Layout } from "@views/layout";
 import { Suspense, useEffect } from "react";
@@ -17,6 +19,8 @@ export function Router() {
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
+		if (!visible || isEnvBrowser()) return;
+
 		navigate(DEFAULT_PAGE, { replace: true });
 	}, [visible]);
 
@@ -24,7 +28,8 @@ export function Router() {
 		<Suspense fallback={<SpinLoader />}>
 			<Routes>
 				<Route element={<Layout />} path="/">
-					<Route element={<Home />} path={routes.home} />
+					<Route element={<Home />} path={routes.home} />{" "}
+					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
 		</Suspense>
