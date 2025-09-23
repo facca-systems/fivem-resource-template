@@ -1,0 +1,1 @@
+import{j as r}from"./index-HDY0gsBJ.js";function t(){const e={name:"facca"};return r.jsx("div",{className:"flex h-full w-full items-center justify-center rounded-sm border border-white/5 border-solid bg-white/[.02]",children:e})}export{t as Home};
