@@ -8,7 +8,7 @@ import { HashRouter } from "react-router-dom";
 if (isEnvBrowser()) {
 	const body = document.getElementById("root");
 
-	body!.style.backgroundImage = "url('https://files.catbox.moe/4lban5.png')";
+	body!.style.backgroundImage = "url('https://files.fivemerr.com/images/ab427266-34e9-4649-8024-077a230837c6.png')";
 	body!.style.backgroundSize = "cover";
 	body!.style.backgroundRepeat = "no-repeat";
 	body!.style.backgroundPosition = "center";
